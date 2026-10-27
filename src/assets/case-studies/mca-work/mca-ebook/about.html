@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Navigating Change: AI in Digital Marketing Strategies | MCA</title>
+<meta name="description" content="Unlock the potential of AI in digital marketing. Learn how AI content marketing strategies can drive innovation and enhance engagement for businesses today.">
+<meta name="keywords" content="ai content marketing, ai in digital marketing, ai marketing strategy">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Navigating Change: AI in Digital Marketing Strategies">
+<meta property="og:description" content="Unlock the potential of AI in digital marketing. Learn how AI content marketing strategies can drive innovation and enhance engagement for businesses today.">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{
+  --plum:#3F0B3E; --plum-deep:#2A0729; --plum-mid:#5B1358;
+  --magenta:#A81C6B; --magenta-soft:#C4438A; --olive:#8A8C2C;
+  --ink:#241F26; --body:#3D3742; --muted:#6E6675;
+  --paper:#FFFFFF; --paper-2:#FAF7FA; --line:#E6DEE7;
+  --sans:"Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-text-size-adjust:100%;overflow-x:hidden}
+img,svg{max-width:100%}
+a{color:var(--magenta)}
+:focus-visible{outline:3px solid var(--olive);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+.eyebrow{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--magenta);font-weight:700;margin:0 0 12px}
+h2{font-family:var(--serif);font-weight:400;color:var(--plum);letter-spacing:-.015em;font-size:clamp(1.8rem,4.2vw,2.6rem);line-height:1.15;margin:0 0 18px}
+h3{font-size:1.06rem;color:var(--plum);margin:0 0 8px;letter-spacing:-.005em}
+p{margin:0 0 16px}
+.rule{display:block;width:70px;height:3px;background:var(--olive);margin:0 0 30px}
+
+/* header */
+.topbar{background:var(--plum-deep);color:#fff;padding:14px clamp(20px,5vw,40px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topbar .mark{font-size:.95rem;letter-spacing:.42em;font-weight:600;color:#fff;text-decoration:none}
+.topbar .note{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.68)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;padding:clamp(56px,8vw,96px) 0 clamp(60px,9vw,110px);
+  background:
+    radial-gradient(1100px 620px at 88% 6%,rgba(168,28,107,.55),transparent 62%),
+    radial-gradient(760px 520px at 4% 96%,rgba(138,140,44,.30),transparent 64%),
+    linear-gradient(160deg,var(--plum-deep) 0%,var(--plum) 48%,var(--plum-mid) 100%);}
+.hero-grid{position:absolute;inset:0;opacity:.16;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,64px);align-items:center}
+.kicker{display:inline-block;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;font-weight:600;color:#fff;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.3);padding:7px 16px;border-radius:999px;margin-bottom:22px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.1rem,5.4vw,3.6rem);line-height:1.08;letter-spacing:-.02em;margin:0;color:#fff}
+.hero h1 em{font-style:italic;color:#F2B8DA}
+.hero .sub{margin:22px 0 0;max-width:32em;font-size:clamp(1rem,2vw,1.12rem);color:rgba(255,255,255,.82)}
+.hero .cues{list-style:none;margin:26px 0 30px;padding:0;display:grid;gap:10px}
+.hero .cues li{display:flex;gap:12px;align-items:flex-start;color:rgba(255,255,255,.9);font-size:.98rem}
+.tick{flex:none;margin-top:3px}
+.cta{display:inline-block;font:inherit;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:var(--olive);color:#fff;border:1px solid var(--olive);border-radius:999px;padding:15px 30px;text-decoration:none;cursor:pointer;min-height:48px}
+.cta:hover{background:#9ea233;border-color:#9ea233}
+.cta.ghost{background:transparent;border-color:rgba(255,255,255,.5)}
+.cta.ghost:hover{background:#fff;color:var(--plum);border-color:#fff}
+
+/* cover art */
+.coverart{position:relative;perspective:1200px}
+.book{position:relative;width:min(100%,360px);margin:0 auto;aspect-ratio:3/4;border-radius:4px 10px 10px 4px;overflow:hidden;
+  box-shadow:0 40px 70px -24px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.14);
+  transform:rotate(-2deg);background:linear-gradient(155deg,#33082F 0%,#4A0F47 55%,#65155F 100%)}
+.book:before{content:"";position:absolute;top:0;bottom:0;left:0;width:16px;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,0))}
+.book-in{position:absolute;inset:0;padding:clamp(22px,5vw,34px) clamp(20px,4.5vw,30px) clamp(22px,5vw,30px) clamp(30px,6vw,44px);display:flex;flex-direction:column}
+.book .mca{font-size:.9rem;letter-spacing:.44em;font-weight:600;color:#fff;margin:0}
+.book .tag{font-size:.55rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.6);margin:6px 0 auto}
+.book h2{font-family:var(--serif);color:#fff;font-size:clamp(1.3rem,3.2vw,1.7rem);line-height:1.16;margin:0 0 14px}
+.book h2 em{font-style:italic;color:#F2B8DA}
+.book .bar{width:60px;height:3px;background:var(--olive)}
+.book .badge{margin-top:14px;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+
+/* sections */
+section{padding:clamp(56px,8vw,96px) 0}
+.alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,60px)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:8px}
+.card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--magenta);border-radius:8px;padding:22px 22px 18px}
+.card p{margin:0;color:var(--body);font-size:.97rem}
+.num{font-size:.72rem;font-weight:700;letter-spacing:.2em;color:var(--olive);margin:0 0 10px}
+.chapters{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.chapters li{border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:baseline;padding:15px 4px}
+.chapters .n{font-size:.85rem;font-weight:700;color:var(--magenta);min-width:2ch;font-variant-numeric:tabular-nums}
+.chapters .t{font-weight:600;color:var(--ink)}
+.aud{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.aud div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px}
+
+/* form */
+#get-the-ebook{background:linear-gradient(160deg,var(--plum-deep),var(--plum) 60%,var(--plum-mid));color:#fff}
+#get-the-ebook h2{color:#fff}
+#get-the-ebook .eyebrow{color:#F2B8DA}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,56px);align-items:start}
+.formcard{background:#fff;border-radius:12px;padding:clamp(22px,4vw,34px);color:var(--body);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.formcard h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin:0 0 6px}
+.formcard .hint{font-size:.9rem;color:var(--muted);margin:0 0 20px}
+.hs-slot{min-height:120px}
+.hs-slot input[type=text],.hs-slot input[type=email],.hs-slot input[type=tel],.hs-slot select,.hs-slot textarea{
+  width:100%!important;max-width:100%!important;font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);margin-bottom:14px}
+.hs-slot label{display:block;font-size:.85rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.hs-slot input[type=submit],.hs-slot .hs-button{
+  font:inherit;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  background:var(--olive);color:#fff;border:0;border-radius:999px;padding:15px 30px;cursor:pointer;width:100%;min-height:48px}
+.hs-slot input[type=submit]:hover,.hs-slot .hs-button:hover{background:#9ea233}
+.placeholder{border:2px dashed var(--magenta-soft);border-radius:8px;padding:26px 20px;text-align:center;color:var(--plum);font-size:.9rem;background:#FDF7FB}
+.placeholder strong{display:block;color:var(--plum);letter-spacing:.14em;text-transform:uppercase;font-size:.85rem}
+.list-light{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px}
+.list-light li{display:flex;gap:12px;color:rgba(255,255,255,.88);font-size:1rem}
+
+footer{background:var(--plum-deep);color:rgba(255,255,255,.7);padding:34px 0;font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+footer .mark{color:#fff;letter-spacing:.42em;font-weight:600}
+
+@media(max-width:900px){
+  .hero .wrap,.two,.formgrid{grid-template-columns:1fr}
+  .coverart{order:-1}
+  .book{transform:none;width:min(78%,300px)}
+}
+@media print{.topbar,.cta{display:none}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <span class="mark">MCA</span>
+  <span class="note">Marcom Content by Ashley</span>
+</header>
+
+<div class="hero">
+  <svg class="hero-grid" aria-hidden="true" width="100%" height="100%">
+    <defs><pattern id="g" width="46" height="46" patternUnits="userSpaceOnUse">
+      <path d="M46 0H0V46" fill="none" stroke="#ffffff" stroke-width="1"/>
+    </pattern></defs>
+    <rect width="100%" height="100%" fill="url(#g)"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <span class="kicker">Free Ebook</span>
+      <h1>How AI Is Changing Marketing and What It Means for <em>Your Business</em></h1>
+      <p class="sub">This guide explores how AI in digital marketing is changing the industry, where it delivers the greatest value and how businesses can use it responsibly to strengthen their marketing efforts.</p>
+      <a class="cta" href="#get-the-ebook">Get the Ebook</a>
+    </div>
+    <div class="coverart">
+      <div class="book" role="img" aria-label="Ebook cover: How AI Is Changing Marketing and What It Means for Your Business">
+        <div class="book-in">
+          <p class="mca">MCA</p>
+          <p class="tag">Marcom Content by Ashley</p>
+          <h2>How AI Is Changing Marketing and What It Means for <em>Your Business</em></h2>
+          <span class="bar"></span>
+          <p class="badge">Ebook</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <p class="eyebrow">What&rsquo;s Inside</p>
+        <h2>How AI Is Changing Marketing and What It Means for Your Business</h2>
+        <span class="rule"></span>
+<p>AI is no longer something businesses are preparing for; it is already changing how companies market their products and connect with customers. From analyzing customer behavior to helping marketers create content and manage campaigns, AI has become part of many daily marketing activities. The conversation has shifted from whether businesses should use AI to how they can use it effectively. Companies that incorporate AI with a clear purpose are finding new ways to save time, better understand their audiences and improve customer experiences. Those that depend on AI without a plan often end up with generic content, inconsistent messaging or inaccurate information. The key isn't replacing people with technology. It's finding the right balance between automation and human expertise.</p>
+<p>At MCA, we've seen AI become a valuable tool for research, brainstorming, content planning and data analysis. At the same time, we've also seen firsthand that successful marketing still depends on strategy, creativity and an understanding of your audience. AI can help teams work smarter, but it can't replace the experience needed to build trust, tell compelling stories or make strategic business decisions.</p>
+        <a class="cta" href="#get-the-ebook">Get the Ebook</a>
+      </div>
+      <div>
+        <p class="eyebrow">Table of Contents</p>
+        <ol class="chapters">
+          <li><span class="n">1</span><span class="t">How AI Is Changing Marketing and What It Means for Your Business</span></li>
+          <li><span class="n">2</span><span class="t">Why AI matters for businesses today</span></li>
+          <li><span class="n">3</span><span class="t">How AI is changing digital marketing</span></li>
+          <li><span class="n">4</span><span class="t">How AI is changing search</span></li>
+          <li><span class="n">5</span><span class="t">Google's AI overviews are changing search visibility</span></li>
+          <li><span class="n">6</span><span class="t">Search intent matters more than keywords</span></li>
+          <li><span class="n">7</span><span class="t">Write for people before search engines</span></li>
+          <li><span class="n">8</span><span class="t">Build authority with pillar content</span></li>
+          <li><span class="n">9</span><span class="t">Common AI mistakes businesses should avoid</span></li>
+          <li><span class="n">10</span><span class="t">Building an AI marketing strategy</span></li>
+          <li><span class="n">11</span><span class="t">Choosing the right AI tools for your business</span></li>
+          <li><span class="n">12</span><span class="t">What should always stay human</span></li>
+          <li><span class="n">13</span><span class="t">Frequently asked questions about AI in marketing</span></li>
+          <li><span class="n">14</span><span class="t">AI supports marketing, but strategy leads the way</span></li>
+          <li><span class="n">15</span><span class="t">Ready to strengthen your marketing strategy?</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="get-the-ebook">
+  <div class="wrap">
+    <div class="formgrid">
+      <div>
+        <p class="eyebrow">Get the Ebook</p>
+        <h2>How AI Is Changing Marketing and What It Means for Your Business</h2>
+        <span class="rule"></span>
+      </div>
+
+      <div class="formcard">
+        <div class="hs-slot">
+          <!-- ============================================================ -->
+          <!-- HUBSPOT FORM EMBED GOES HERE                                 -->
+          <!-- Paste the HubSpot form embed code (script + target div)      -->
+          <!-- directly between these comments, replacing the placeholder   -->
+          <!-- block below. Configure the form's post-submit behavior in    -->
+          <!-- HubSpot to REDIRECT to the Thank You page (thank-you.html).  -->
+          <!-- ============================================================ -->
+
+          <div class="placeholder">
+            <strong>FORM PLACEHOLDER</strong>
+          </div>
+
+          <!-- ============ END HUBSPOT FORM EMBED AREA ==================== -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="mark">MCA</span>
+    <span>Marcom Content by Ashley</span>
+  </div>
+</footer>
+
+</body>
+</html>

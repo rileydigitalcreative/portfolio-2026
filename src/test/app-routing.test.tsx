@@ -17,7 +17,7 @@ describe("App routing", () => {
 });
 
 describe("Portfolio pages", () => {
-  const paths = ["/work", "/about", "/contact", "/work/step-inside-a-computer", "/work/hands-free-recipe-navigator", "/work/butterfield-farm-market", "/work/mobile-app-development"];
+  const paths = ["/work", "/about", "/contact", "/work/step-inside-a-computer", "/work/hands-free-recipe-navigator", "/work/mca-work", "/work/mobile-app-development"];
   for (const p of paths) {
     it(`matches ${p}`, () => {
       const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });

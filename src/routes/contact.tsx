@@ -18,8 +18,8 @@ export const Route = createFileRoute("/contact")({
 
 export function ContactLinks() {
   return (
-    <ul className="flex flex-col items-start gap-5">
-      <li>{site.email ? <a href={`mailto:${site.email}`} className="link-underline text-2xl">{site.email}</a> : <span className="text-muted-foreground">[TO ADD — professional email]</span>}</li>
+    <ul className="flex min-w-0 flex-col items-start gap-5">
+      <li>{site.email ? <a href={`mailto:${site.email}`} className="link-underline break-all text-2xl">{site.email}</a> : <span className="text-muted-foreground">[TO ADD — professional email]</span>}</li>
       <li>{site.linkedin ? <a href={site.linkedin} target="_blank" rel="noreferrer" className="eyebrow link-underline pb-1">LinkedIn ↗</a> : <span className="text-muted-foreground">[TO ADD — LinkedIn URL]</span>}</li>
       {site.resumeUrl && <li><a href={site.resumeUrl} className="rounded-full bg-primary px-7 py-3 eyebrow text-primary-foreground hover:bg-charcoal">Résumé (PDF)</a></li>}
     </ul>
@@ -29,8 +29,8 @@ export function ContactLinks() {
 function Contact() {
   return (
     <Page>
-      <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-32">
-        <h1 className="font-display animate-rise text-7xl uppercase md:text-9xl">Let’s connect</h1>
+      <section className="site-container section-space-spacious">
+        <h1 className="font-display animate-rise text-4xl uppercase sm:text-6xl md:text-7xl lg:text-9xl">Let’s connect</h1>
         <p className="font-script animate-ink mt-2 text-5xl text-charcoal">I’d love to hear from you</p>
         <div className="hairline my-12 w-24" />
         <div className="grid gap-12 md:grid-cols-2">

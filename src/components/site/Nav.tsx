@@ -13,7 +13,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-40 bg-background/85 backdrop-blur-sm">
-      <nav aria-label="Main" className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-10">
+      <nav aria-label="Main" className="site-container flex items-center justify-between py-5">
         <Link to="/" className="font-display text-xl" aria-label={`${site.name} — home`}>{site.initials}</Link>
         <ul className="hidden gap-10 md:flex">
           {links.map((l) => (
@@ -42,7 +42,7 @@ export function Nav() {
 
 export function Footer() {
   return (
-    <footer className="mx-auto max-w-7xl px-6 pb-10 md:px-10">
+    <footer className="site-container pb-10">
       <div className="hairline mb-8" />
       <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
         <span className="font-script text-3xl">{site.name}</span>
@@ -67,7 +67,7 @@ export function SectionHead({ n, title, script }: { n: string; title: string; sc
   return (
     <div className="mb-12">
       <span className="eyebrow text-rose">{n}</span>
-      <h2 className="font-display mt-3 text-5xl md:text-7xl">{title}</h2>
+      <h2 className="font-display mt-3 text-4xl sm:text-5xl md:text-7xl">{title}</h2>
       {script && <p className="font-script mt-1 text-3xl text-charcoal">{script}</p>}
     </div>
   );

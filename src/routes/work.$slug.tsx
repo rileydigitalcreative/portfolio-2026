@@ -4,7 +4,8 @@ import { Page } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
 import { AssetPlaceholder, StatusTag } from "@/components/site/Work";
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { caseStudies, type CaseStudy, type HandsFreeSection, type MobileAppPreview, type StepInsideSection } from "@/content/site";
+import { caseStudies, professionalProjects, type CaseStudy, type HandsFreeSection, type MobileAppPreview, type StepInsideSection } from "@/content/site";
+import { ProfessionalWork } from "@/components/site/Work";
 
 export const Route = createFileRoute("/work/$slug")({
   loader: ({ params }) => {
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/work/$slug")({
     };
   },
   notFoundComponent: () => (
-    <Page><div className="mx-auto max-w-7xl px-6 py-32 md:px-10"><h1 className="font-display text-6xl">Project not found</h1><Link to="/work" className="eyebrow link-underline mt-8 inline-block pb-1">← All work</Link></div></Page>
+    <Page><div className="site-container section-space-spacious"><h1 className="font-display text-6xl">Project not found</h1><Link to="/work" className="eyebrow link-underline mt-8 inline-block pb-1">← All work</Link></div></Page>
   ),
   component: CaseStudyPage,
 });
@@ -698,11 +699,10 @@ function StepInsideCaseStudy({ p, data }: { p: CaseStudy; data: StepInsideSectio
 
 function CaseStudyPage() {
   const { p, next } = Route.useLoaderData();
-  const isCampaign = p.slug === "butterfield-farm-market";
   const heroPreview = p.heroImage ?? p.handsFree?.finalInterfaces[0]?.image;
   return (
     <Page>
-      <article className="mx-auto max-w-7xl px-6 py-16 md:px-10">
+      <article className="site-container section-space-intro">
         <Link to="/work" className="eyebrow link-underline pb-1">← All work</Link>
         {p.stepInside || p.handsFree || p.mobileAppPreview ? (
           <section className={`mt-12 grid items-center gap-10 ${p.mobileAppPreview ? "lg:grid-cols-[minmax(0,1fr)_16rem]" : "lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-14"}`} aria-label="Project overview">
@@ -732,7 +732,7 @@ function CaseStudyPage() {
               <span className="eyebrow text-rose">{p.type}</span>
               <StatusTag s={p.status} />
             </div>
-            <h1 className="font-display animate-rise mt-4 max-w-5xl text-5xl md:text-7xl lg:text-8xl">{p.title}</h1>
+            <h1 className="font-display animate-rise mt-4 max-w-5xl text-4xl sm:text-5xl md:text-7xl lg:text-8xl">{p.title}</h1>
             <p className="mt-6 max-w-2xl text-xl text-charcoal">{p.summary}</p>
             <dl className="mt-10 grid gap-6 border-y py-6 sm:grid-cols-3">
               {p.facts.map((f) => <div key={f.k}><dt className="eyebrow text-muted-foreground">{f.k}</dt><dd className="mt-1">{f.v}</dd></div>)}
@@ -740,13 +740,15 @@ function CaseStudyPage() {
           </>
         )}
 
-        {p.stepInside ? <StepInsideCaseStudy p={p} data={p.stepInside} /> : p.handsFree ? <HandsFreeCaseStudy p={p} data={p.handsFree} /> : p.mobileAppPreview ? <MobileAppDevelopmentCaseStudy p={p} data={p.mobileAppPreview} /> : p.heroImage ? (
+        {p.professionalWork ? (
+          <ProfessionalWork projects={professionalProjects} title="Selected Deliverables" />
+        ) : p.stepInside ? <StepInsideCaseStudy p={p} data={p.stepInside} /> : p.handsFree ? <HandsFreeCaseStudy p={p} data={p.handsFree} /> : p.mobileAppPreview ? <MobileAppDevelopmentCaseStudy p={p} data={p.mobileAppPreview} /> : p.heroImage ? (
           <img src={p.heroImage} alt={`${p.title} hero`} className="mt-12 h-auto w-full rounded-lg" />
         ) : (
           <AssetPlaceholder label={`${p.title} — hero image`} className="mt-12 aspect-[16/8]" />
         )}
 
-        {!p.stepInside && !p.handsFree && !p.mobileAppPreview && <div className="mt-16">
+        {!p.stepInside && !p.handsFree && !p.mobileAppPreview && !p.professionalWork && <div className="mt-16">
           <Row label="Context & problem">{p.problem}</Row>
           <Row label="Goals & audience">{p.goals}</Row>
           <Row label="My role">
@@ -756,9 +758,9 @@ function CaseStudyPage() {
           <Row label="Tools">{p.tools.join(" · ")}</Row>
         </div>}
 
-        {!p.stepInside && !p.handsFree && !p.mobileAppPreview && <h2 className="font-display mt-24 text-4xl md:text-6xl">{p.chapterLabel}</h2>}
+        {!p.stepInside && !p.handsFree && !p.mobileAppPreview && !p.professionalWork && <h2 className="font-display mt-24 text-4xl md:text-6xl">{p.chapterLabel}</h2>}
 
-        {!p.stepInside && !p.handsFree && !p.mobileAppPreview && (p.apps ? (
+        {!p.stepInside && !p.handsFree && !p.mobileAppPreview && !p.professionalWork && (p.apps ? (
           <div className="mt-12 grid gap-10 md:grid-cols-2">
             {p.apps.map((a) => (
               <Reveal key={a.title} className="border-t pt-6">
@@ -774,9 +776,9 @@ function CaseStudyPage() {
             ))}
           </div>
         ) : (
-          <ol className={`mt-12 grid gap-x-6 gap-y-12 ${isCampaign ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
+          <ol className="mt-12 grid gap-x-6 gap-y-12 md:grid-cols-2">
             {p.chapters.map((c, i) => (
-              <Reveal key={c.title} className={!isCampaign && (c.assets?.length ?? 0) > 1 ? "md:col-span-2" : ""}>
+              <Reveal key={c.title} className={(c.assets?.length ?? 0) > 1 ? "md:col-span-2" : ""}>
                 <li className="list-none border-t pt-5">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <span className="eyebrow text-rose">{String(i + 1).padStart(2, "0")}</span>
@@ -799,7 +801,7 @@ function CaseStudyPage() {
           </ol>
         ))}
 
-        {!p.stepInside && !p.handsFree && !p.mobileAppPreview && <div className="mt-20"><Row label="Outcome & next steps">{p.reflection}</Row></div>}
+        {!p.stepInside && !p.handsFree && !p.mobileAppPreview && !p.professionalWork && <div className="mt-20"><Row label="Outcome & next steps">{p.reflection}</Row></div>}
 
         <div className="mt-16 flex flex-col gap-10 border-t pt-10 md:flex-row md:items-end md:justify-between">
           <Link to="/work/$slug" params={{ slug: next.slug }} className="group block">

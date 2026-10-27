@@ -94,6 +94,45 @@
   &:hover { background-size: 100% 1px; }
 }
 
+.site-container {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.section-space {
+  padding-block: 5rem;
+}
+
+.section-space-intro {
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+}
+
+.section-space-spacious {
+  padding-block: 5rem;
+}
+
+@media (min-width: 48rem) {
+  .site-container {
+    padding-inline: 2.5rem;
+  }
+
+  .section-space {
+    padding-block: 6rem;
+  }
+
+  .section-space-intro {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .section-space-spacious {
+    padding-block: 7rem;
+  }
+}
+
 @keyframes rise { from { opacity: 0; transform: translateY(0.4em); } to { opacity: 1; transform: none; } }
 @keyframes ink { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }

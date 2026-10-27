@@ -19,7 +19,7 @@ export const site = {
   linkedin: "www.linkedin.com/in/riley-hammond-miamiuniversity" as string,
   // Put the PDF in /public/downloads/ and set e.g. "/downloads/riley-hammond-resume.pdf".
   resumeUrl: "" as string,
-  portrait: null as string | null,
+  portrait: headshot as string | null,
 };
 
 export const approach = [
@@ -30,8 +30,24 @@ export const approach = [
 ];
 
 export const education = [
-  { school: "Miami University", program: "Emerging Technology in Business and Design", detail: "Minor in Digital Marketing", dates: "Expected graduation · May 2027" },
+  {
+    school: "Miami University",
+    program: "Emerging Technology in Business and Design",
+    detail: "Minor in Digital Marketing",
+    dates: "Expected graduation · May 2027",
+    honors: ["Dean’s List · Fall 2025", "Dean’s List · Spring 2026"],
+  },
 ];
+
+export const certifications = [
+  {
+    title: "Social Media Marketing Foundations",
+    description:
+      "Completed foundational training in social media marketing through LinkedIn Learning.",
+    pdfUrl: socialMediaMarketingCertificate,
+  },
+];
+export const mcaRecommendationLetterUrl = mcaRecommendationLetter;
 
 export const experience = [
   {
@@ -72,6 +88,7 @@ export const featuredTools = [
   { label: "Adobe Premiere Pro", icon: "pr.svg" },
 ] as { label: string; icon: string; alt?: string }[];
 
+import headshot from "@/assets/headshots/headshot1.jpg";
 import heroImage from "@/assets/case-studies/step-inside-a-computer/hero.jpg";
 import conceptMoodboard from "@/assets/case-studies/step-inside-a-computer/concept-moodboard.jpg";
 import conceptMoodboardTwo from "@/assets/case-studies/step-inside-a-computer/concept-moodboard-2.jpg";
@@ -109,6 +126,18 @@ import gestureNextStep from "@/assets/case-studies/hands-free-recipe/gestures/ne
 import gestureRecipeSelect from "@/assets/case-studies/hands-free-recipe/gestures/recipe-select.jpg";
 import testingNextStep from "@/assets/case-studies/hands-free-recipe/testing/next-step.jpg";
 import testingPreviousStep from "@/assets/case-studies/hands-free-recipe/testing/previous-step.jpg";
+import handsFreeRecipeCover from "@/assets/case-studies/hands-free-recipe/project-cover-photo/recipe-cover-photo.png";
+import mcaAboutPage from "@/assets/case-studies/mca-work/mca-ebook/about.html?raw";
+import mcaThankYouPage from "@/assets/case-studies/mca-work/mca-ebook/thank-you.html?raw";
+import mcaEbookPage from "@/assets/case-studies/mca-work/mca-ebook/ebook.html?raw";
+import mcaWorkCover from "@/assets/case-studies/mca-work/project-cover-photo/internship-project-photo.png";
+import mconleyBrochureInside from "@/assets/case-studies/mca-work/mconley-brochure/brochure-inside.png";
+import mconleyBrochureOutside from "@/assets/case-studies/mca-work/mconley-brochure/brochure-outside.png";
+import papaGyrosGoogleReel from "@/assets/case-studies/mca-work/papa-gyros-reels/google-search-reel.mp4";
+import papaGyrosReel from "@/assets/case-studies/mca-work/papa-gyros-reels/gyros-reel.mp4";
+import papaGyrosSummerReel from "@/assets/case-studies/mca-work/papa-gyros-reels/summer-flavors-reel.mp4";
+import socialMediaMarketingCertificate from "@/assets/certifications/CertificateOfCompletion_Social Media Marketing Foundations.pdf?url";
+import mcaRecommendationLetter from "@/assets/reccomendation-letter/Riley Hammond_Letter of Recommendation.pdf?url";
 
 export const toolGroups = [
   { title: "Web & Development", tools: ["HTML", "CSS", "JavaScript", "GitHub", "Lovable", "Expo Go", "Squarespace"] },
@@ -198,7 +227,7 @@ export type MobileAppPreview = {
 export type AppEntry = { title: string; assignment: string; description: string; tech: string[]; learned: string };
 
 export type CaseStudy = {
-  slug: "step-inside-a-computer" | "hands-free-recipe-navigator" | "butterfield-farm-market" | "mobile-app-development";
+  slug: "step-inside-a-computer" | "hands-free-recipe-navigator" | "mca-work" | "mobile-app-development";
   title: string;
   type: string;
   status: Status;
@@ -207,6 +236,7 @@ export type CaseStudy = {
   categories: string[];
   facts: { k: string; v: string }[];
   heroImage?: string;
+  cardImage?: string;
   problem: string;
   goals: string;
   role: string;
@@ -219,6 +249,7 @@ export type CaseStudy = {
   stepInside?: StepInsideSection;
   handsFree?: HandsFreeSection;
   mobileAppPreview?: MobileAppPreview;
+  professionalWork?: boolean;
 };
 
 const TBA = "[TO ADD]";
@@ -234,6 +265,7 @@ export const caseStudies: CaseStudy[] = [
     categories: ["UX/UI design", "Experience design", "Information architecture", "Moodboards & wireframes", "User workflows & sitemaps"],
     facts: [{ k: "Type", v: "Experience design concept" }, { k: "Course", v: "Intermediate Interaction Design" }, { k: "Year", v: "2026" }],
     heroImage,
+    cardImage: chatgptImageOne,
     problem: `${TBA} — the challenge of explaining a complex, invisible system in a way that feels approachable and engaging.`,
     goals: `${TBA} — project goals and intended audience.`,
     role: TBA,
@@ -441,8 +473,9 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "hands-free-recipe-navigator",
     title: "Hands-Free Recipe Navigator",
+    cardImage: handsFreeRecipeCover,
     type: "Interaction Design · UX/UI · Prototyping",
-    status: "In Progress",
+    status: "Completed",
     featured: true,
     summary: "A gesture-controlled cookbook prototype exploring how people can navigate recipes hands-free through camera-based hand recognition and audio feedback.",
     categories: ["Interaction design", "UX/UI", "Prototyping", "Gesture-based interaction", "Audio feedback"],
@@ -511,35 +544,29 @@ export const caseStudies: CaseStudy[] = [
     reflection: "This project showed me that designing a micro-interaction involves more than assigning an action to a gesture. The interaction needs to be understandable to the user, recognizable by the system, and reliable enough to feel intentional.\n\nOne of our biggest challenges was distinguishing deliberate navigation gestures from ordinary movements. Through feedback and iteration, we learned the importance of clear gesture mappings, useful system feedback, and testing interactions in realistic contexts.\n\nThe project also made me consider the accessibility potential of alternative input methods. Hands-free navigation could be useful for people who find traditional input devices difficult to use, as well as people whose hands are occupied during a task. At the same time, gestures are not universally interpreted in the same way, and gesture-based controls may create barriers for some users. Further research and testing with people with different access needs would be necessary to understand where this approach is genuinely helpful.\n\nIf I continued developing the project, I would improve gesture recognition and intentionality, make the gesture guide easier to read, expand recipe and navigation options, and test the experience with a wider range of users in realistic cooking scenarios.\n\nMy biggest takeaway was that successful interaction design depends on understanding people, communicating system behavior clearly, and refining ideas based on feedback. This project let me contribute to visual design, wireframing, documentation, presentation, and collaborative development while exploring how emerging technology can support everyday experiences.",
   },
   {
-    slug: "butterfield-farm-market",
-    title: "Butterfield Farm Market Campaign",
-    type: "Social Media · Campaign Strategy",
-    status: "In Progress",
+    slug: "mca-work",
+    title: "MCA Professional Work",
+    cardImage: mcaWorkCover,
+    type: "Professional Work · Design, Web & Marketing",
+    status: "Completed",
     featured: true,
-    summary: "An integrated social media campaign for a local farm market in Oxford, Ohio — from owner interviews and strategy to original video and publishing.",
-    categories: ["Social media marketing", "Campaign strategy", "Brand storytelling", "Content creation & video", "Social publishing"],
-    facts: [{ k: "Type", v: "Integrated social campaign" }, { k: "Client", v: "Butterfield Farm Market · Oxford, Ohio" }, { k: "Year", v: TBA }],
-    problem: `${TBA} — the farm market’s current social presence and opportunity.`,
-    goals: `${TBA} — audience and SMART objectives once finalized.`,
-    role: "Strategy, interviews, footage, and content production",
-    contributions: ["Gathering original footage", "Interviewing the owners", "Developing the campaign strategy", "Preparing content for the farm’s social channels"],
-    tools: [TBA],
-    chapterLabel: "Research → strategy → execution → evaluation",
-    chapters: [
-      { title: "Brand & audience overview", status: "In Progress", assets: ["Brand overview"] },
-      { title: "Owner interviews & insights", status: "In Progress", assets: ["Interview notes / quotes"] },
-      { title: "PESO model", status: "In Progress", assets: ["PESO model"] },
-      { title: "MICO + PESTLE analysis", status: "In Progress", assets: ["MICO + PESTLE"] },
-      { title: "SWOT analysis", status: "In Progress", assets: ["SWOT"] },
-      { title: "TOWS strategy", status: "In Progress", assets: ["TOWS"] },
-      { title: "SMART objectives", status: "In Progress", assets: ["Objectives"] },
-      { title: "Campaign plan & content calendar", status: "In Progress", assets: ["Content calendar"] },
-      { title: "Creative direction & production", status: "In Progress", assets: ["Creative direction board"] },
-      { title: "Video & photography", status: "In Progress", assets: ["Video still", "Photo"] },
-      { title: "Social posts & publishing", status: "Planned", assets: ["Published post"] },
-      { title: "Evaluation & results", status: "Planned", body: "Verified results will be added once the campaign runs." },
+    summary:
+      "A collection of professional creative work, including an e-book web experience, social video deliverables, and brochure design.",
+    categories: ["Web development", "Digital marketing", "Social video", "Graphic design"],
+    facts: [
+      { k: "Organization", v: "MCA and client projects" },
+      { k: "Focus", v: "Design, web development, and digital content" },
+      { k: "Experience", v: "Professional work" },
     ],
-    reflection: "Lessons learned and next steps will be added as the campaign progresses.",
+    problem: "",
+    goals: "",
+    role: "",
+    contributions: [],
+    tools: [],
+    chapterLabel: "",
+    chapters: [],
+    reflection: "",
+    professionalWork: true,
   },
   {
     slug: "mobile-app-development",
@@ -596,7 +623,6 @@ export const caseStudies: CaseStudy[] = [
         { id: "2", name: "Brick Street", type: "Bar", address: "36 E High Street", rating: 3.5, cost: "$", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDNO9n33JrUOvOYEMhr5kxO2zQOlkpFJHdNanM1TqLhZJAqQYmC1lIPPc&s=10", website: "https://brickstreetbar.com/about/" },
         { id: "3", name: "Ramen Hachi", type: "Restaurant", address: "17 W Church Street", rating: 4.6, cost: "$$", image: "https://ramenhachi.com/menu/Yuzu%20shio-enhanced.png", website: "https://www.ramenhachi.com" },
         { id: "4", name: "Insomnia Cookies", type: "Restaurant", address: "33 E High Street", rating: 3.9, cost: "$$", image: "https://hips.hearstapps.com/hmg-prod/images/img-8479-jpg-68f13c1348587.jpg?crop=0.609xw:0.812xh;0.199xw,0.00907xh&resize=640:*", website: "https://insomniacookies.com" },
-        { id: "5", name: "Butterfield Farms", type: "Farm & Market", address: "400 Trenton Road", rating: 5, cost: "$", image: "https://dam.assets.ohio.gov/image/upload/q_auto/ohio.org/uploads/068t0000006Q5ujAAC.jpg", website: "https://www.facebook.com/p/Butterfields-Farm-Market-100075926226836/" },
         { id: "6", name: "SoHi", type: "Restaurant", address: "17 E High Street", rating: 4.4, cost: "$$", image: "https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=600,height=400,format=auto,quality=80/https://doordash-static.s3.amazonaws.com/media/store/header/97b2cba5-26c3-41f5-a304-93b09930490e.jpg", website: "https://www.sohisandwich.com/" },
         { id: "7", name: "Peffer Park", type: "Park", address: "4346 Millville Oxford Road", rating: 4.6, cost: "$", image: "https://enjoyoxford.org/wp-content/uploads/2024/10/Peffer-Park-Gazebo.png", website: "https://www.oxfordareatrails.org/visit-the-trails" },
         { id: "8", name: "Bagel & Deli", type: "Restaurant", address: "119 E High Street", rating: 4.6, cost: "$", image: "http://bagelanddeli.com/uploads/1/3/7/0/13702275/editor/crunchandmunch_1.jpg?1559765225", website: "https://www.bagelanddeli.com" },
@@ -611,3 +637,74 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 export const featuredStudies = caseStudies.filter((c) => c.featured);
+
+type ProfessionalProjectBase = {
+  id: string;
+  organization: string;
+  title: string;
+  summary: string;
+  categories: string[];
+};
+
+export type ProfessionalProject =
+  | (ProfessionalProjectBase & {
+      kind: "ebook";
+      liveUrl: string;
+      role: string;
+      pages: { about: string; thankYou: string; ebook: string };
+    })
+  | (ProfessionalProjectBase & {
+      kind: "video";
+      videos: { title: string; src: string }[];
+    })
+  | (ProfessionalProjectBase & {
+      kind: "brochure";
+      panels: { title: string; src: string }[];
+    });
+
+export const mcaEbookLandingUrl =
+  "https://resources.marcomcontentbyashley.com/ai-for-business-leaders";
+
+export const professionalProjects: ProfessionalProject[] = [
+  {
+    id: "mca-ai-ebook",
+    kind: "ebook",
+    organization: "MCA",
+    title: "AI for Business Leaders e-book experience",
+    summary:
+      "A connected e-book experience: the live MCA landing page leads into locally showcased thank-you and e-book pages.",
+    categories: ["Landing page", "Web development", "HubSpot", "E-book experience"],
+    liveUrl: mcaEbookLandingUrl,
+    role: "I built the landing-page experience using Lovable, edited the code, and worked with the associated HubSpot setup. The HubSpot form is managed on MCA’s live website; the previews show the supplied follow-up pages.",
+    pages: {
+      about: mcaAboutPage,
+      thankYou: mcaThankYouPage,
+      ebook: mcaEbookPage,
+    },
+  },
+  {
+    id: "mconley-brochure",
+    kind: "brochure",
+    organization: "M. Conley Company",
+    title: "Brochure design",
+    summary: "Inside and outside of a brochure I designed for M. Conley Company.",
+    categories: ["Graphic design", "Print design", "Layout"],
+    panels: [
+      { title: "Inside", src: mconleyBrochureInside },
+      { title: "Outside", src: mconleyBrochureOutside },
+    ],
+  },
+  {
+    id: "papa-gyros-social-reels",
+    kind: "video",
+    organization: "Papa Gyros",
+    title: "Social media reels",
+    summary: "Social media reels created for Papa Gyros.",
+    categories: ["Social media", "Video", "Content creation"],
+    videos: [
+      { title: "Google Search Reel", src: papaGyrosGoogleReel },
+      { title: "Gyros Reel", src: papaGyrosReel },
+      { title: "Summer Flavors Reel", src: papaGyrosSummerReel },
+    ],
+  },
+];

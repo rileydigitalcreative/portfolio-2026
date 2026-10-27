@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Page, SectionHead } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
-import { site, skillAreas, toolGroups, featuredTools, experience, education } from "@/content/site";
+import { site, skillAreas, toolGroups, featuredTools, experience, education, certifications, mcaRecommendationLetterUrl } from "@/content/site";
 
 const toolIcons = Object.fromEntries(
   Object.entries(import.meta.glob("@/assets/tools/*", { eager: true, query: "?url", import: "default" })).map(([p, u]) => [p.split("/").pop()!, u as string]),
@@ -24,11 +24,11 @@ export const Route = createFileRoute("/about")({
 function About() {
   return (
     <Page>
-      <section className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-24">
+      <section className="site-container section-space-intro">
         <div className="grid items-center gap-12 md:grid-cols-[5fr_7fr]">
-          <div className="aspect-[4/5] overflow-hidden rounded-lg bg-secondary">
+          <div className="aspect-[2/3] w-5/6 overflow-hidden rounded-lg">
             {site.portrait ? (
-              <img src={site.portrait} alt={`Portrait of ${site.name}`} className="h-full w-full object-cover" />
+              <img src={site.portrait} alt={`Portrait of ${site.name}`} className="h-full w-full object-contain" />
             ) : (
               <div className="flex h-full flex-col items-center justify-center gap-3 border border-dashed border-rose p-8 text-center">
                 <span className="font-display text-6xl text-blush">{site.initials}</span>
@@ -45,7 +45,7 @@ function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 md:px-10">
+      <section className="site-container section-space">
         <SectionHead n="01" title="What I bring" script="four areas, one way of working" />
         <div className="grid gap-px overflow-hidden rounded-lg border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {skillAreas.map((g) => (
@@ -59,7 +59,7 @@ function About() {
         <p className="mt-8 max-w-2xl text-lg text-charcoal">These areas work together: one project can move from audience research and campaign strategy to visual design, web implementation, and interactive technology.</p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 md:px-10" aria-labelledby="tools-heading">
+      <section className="site-container section-space" aria-labelledby="tools-heading">
         <span className="eyebrow text-rose">02</span>
         <h2 id="tools-heading" className="font-display mt-3 text-5xl md:text-7xl">The Tools Behind My Work</h2>
         <p className="mt-6 max-w-2xl text-lg text-charcoal">From visual design and digital storytelling to code, app development, and marketing, I bring together the tools that help turn ideas into thoughtful digital experiences.</p>
@@ -85,7 +85,7 @@ function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 md:px-10">
+      <section className="site-container section-space">
         <SectionHead n="03" title="Experience" />
         {experience.map((x) => (
           <Reveal key={x.role} className="grid gap-8 border-t py-10 md:grid-cols-[1fr_3fr]">
@@ -96,6 +96,16 @@ function About() {
             <div>
               <h3 className="font-display text-3xl md:text-4xl">{x.role}</h3>
               <p className="mt-2 text-charcoal">{x.org}</p>
+              {x.orgShort === "MCA" && (
+                <a
+                  href={mcaRecommendationLetterUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="eyebrow mt-5 inline-flex min-h-11 items-center rounded-full border px-5 py-3 transition-colors hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                >
+                  Open MCA Recommendation Letter (PDF) ↗
+                </a>
+              )}
               <ul className="mt-6 space-y-3 text-charcoal">{x.items.map((i) => <li key={i} className="pl-4 -indent-4">— {i}</li>)}</ul>
             </div>
           </Reveal>
@@ -108,8 +118,40 @@ function About() {
               <p className="mt-2 text-lg">{e.program}</p>
               <p className="text-charcoal">{e.detail}</p>
               <p className="eyebrow mt-3 text-muted-foreground">{e.dates}</p>
+              {e.honors && (
+                <ul className="mt-4 space-y-2 text-charcoal">
+                  {e.honors.map((honor) => <li key={honor}>{honor}</li>)}
+                </ul>
+              )}
             </div>
           ))}
+        </div>
+        <div className="grid gap-8 border-t py-10 md:grid-cols-[1fr_3fr]">
+          <p className="eyebrow text-rose">Certifications</p>
+          <div>
+            {certifications.length ? (
+              <ul className="space-y-4">
+                {certifications.map((certification) => (
+                  <li key={certification.title} className="flex flex-col items-start gap-3 border-t pt-5 first:border-0 first:pt-0">
+                    <div>
+                      <h3 className="font-display text-2xl">{certification.title}</h3>
+                      <p className="mt-2 max-w-2xl text-charcoal">{certification.description}</p>
+                    </div>
+                    <a
+                      href={certification.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="eyebrow inline-flex min-h-11 items-center rounded-full border px-5 py-3 transition-colors hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                    >
+                      Open Certificate (PDF) ↗
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-charcoal">Certification details and PDFs will be added soon.</p>
+            )}
+          </div>
         </div>
         <Link to="/contact" className="eyebrow link-underline mt-16 inline-block pb-1">Get in touch →</Link>
       </section>
