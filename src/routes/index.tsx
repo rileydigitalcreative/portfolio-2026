@@ -8,9 +8,9 @@ import { site, approach, featuredStudies } from "@/content/site";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Riley Hammond — Design, Code & Marketing Portfolio" },
+      { title: "Riley Hammond | Portfolio" },
       { name: "description", content: "Riley Hammond brings together design, coding, web experiences, emerging technology, and marketing to create thoughtful digital experiences." },
-      { property: "og:title", content: "Riley Hammond — Portfolio" },
+      { property: "og:title", content: "Riley Hammond | Portfolio" },
       { property: "og:description", content: site.positioning },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

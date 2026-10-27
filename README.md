@@ -1,24 +1,24 @@
-# Pixel Perfect Pixels
+# Riley Hammond | Portfolio
 
-Implement exactly the screenshot and nothing else
+The source for Riley Hammond's portfolio website, built with React, TanStack Start, and Vite.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/9dfa708b-18ef-4252-a45a-d33849ac1c28).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Local development
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm ci
 npm run dev
 ```
+
+## Build
+
+```sh
+npm run build
+```
+
+The standard build uses the project's configured Nitro deployment target. GitHub Pages is
+deployed separately as a static site by the workflow in
+`.github/workflows/deploy.yml`. It prerenders the site with the repository base path
+`/portfolio-2026/` and publishes `.output/public` when changes are pushed to `main`.
+
+The repository's GitHub Pages setting must use **GitHub Actions** as its build and deployment
+source.
