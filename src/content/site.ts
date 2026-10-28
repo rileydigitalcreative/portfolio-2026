@@ -18,7 +18,7 @@ export const site = {
   email: "riley.digital.creative@gmail.com" as string,
   linkedin: "www.linkedin.com/in/riley-hammond-miamiuniversity" as string,
   // Put the PDF in /public/downloads/ and set e.g. "/downloads/riley-hammond-resume.pdf".
-  resumeUrl: "" as string,
+  resumeUrl: resume,
   portrait: headshot as string | null,
 };
 
@@ -138,6 +138,7 @@ import papaGyrosReel from "@/assets/case-studies/mca-work/papa-gyros-reels/gyros
 import papaGyrosSummerReel from "@/assets/case-studies/mca-work/papa-gyros-reels/summer-flavors-reel.mp4";
 import socialMediaMarketingCertificate from "@/assets/certifications/CertificateOfCompletion_Social Media Marketing Foundations.pdf?url";
 import mcaRecommendationLetter from "@/assets/reccomendation-letter/Riley Hammond_Letter of Recommendation.pdf?url";
+import resume from "@/assets/resume/resume-rileyhammond.pdf?url";
 
 export const toolGroups = [
   { title: "Web & Development", tools: ["HTML", "CSS", "JavaScript", "GitHub", "Lovable", "Expo Go", "Squarespace"] },

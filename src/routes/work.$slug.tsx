@@ -11,7 +11,10 @@ export const Route = createFileRoute("/work/$slug")({
   loader: ({ params }) => {
     const i = caseStudies.findIndex((p) => p.slug === params.slug);
     if (i < 0) throw notFound();
-    return { p: caseStudies[i]!, next: caseStudies[(i + 1) % caseStudies.length]! };
+    const visibleStudies = caseStudies.filter((study) => study.slug !== "mobile-app-development");
+    const visibleIndex = visibleStudies.findIndex((study) => study.slug === params.slug);
+    const nextIndex = visibleIndex < 0 ? 0 : (visibleIndex + 1) % visibleStudies.length;
+    return { p: caseStudies[i]!, next: visibleStudies[nextIndex]! };
   },
   head: ({ loaderData }) => {
     const t = loaderData ? `${loaderData.p.title} — Riley Hammond` : "Project — Riley Hammond";
@@ -47,13 +50,13 @@ function ArtifactImage({ label, src, caption, secondary = false }: { label: stri
       <Dialog>
         <DialogTrigger asChild>
           <button type="button" className="block w-full cursor-zoom-in text-left" aria-label={`Enlarge ${label}`}>
-            <img src={src} alt={label} className="h-auto w-full rounded-lg border object-contain" />
+            <img src={src} alt={label} className="mx-auto h-auto w-auto max-w-full rounded-lg border object-contain md:mx-0 md:w-full" />
           </button>
         </DialogTrigger>
         <DialogContent className="max-h-[95vh] max-w-[min(96vw,90rem)] overflow-auto p-4">
           <DialogTitle className="eyebrow pr-8">{label}</DialogTitle>
           <DialogDescription className="sr-only">Enlarged view of {label}</DialogDescription>
-          <img src={src} alt={label} className="h-auto max-h-[80vh] w-full object-contain" />
+          <img src={src} alt={label} className="mx-auto h-auto max-h-[80vh] w-auto max-w-full object-contain md:mx-0 md:w-full" />
         </DialogContent>
       </Dialog>
       {caption && <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">{caption}</figcaption>}
@@ -123,7 +126,7 @@ function LivePrototypePreview({ url, screenshot }: { url: string; screenshot: st
           aria-label="Open the live recipe-selection prototype in a new tab"
           className="block rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
         >
-          <img src={screenshot} alt="Recipe-selection screen from Hands-Free Recipe Navigator; select to open the live prototype." className="h-auto w-full rounded-lg border object-contain" />
+          <img src={screenshot} alt="Recipe-selection screen from Hands-Free Recipe Navigator; select to open the live prototype." className="mx-auto h-auto w-auto max-w-full rounded-lg border object-contain md:mx-0 md:w-full" />
           <span className="mt-2 block text-sm text-muted-foreground">Recipe-selection screenshot · opens live prototype ↗</span>
         </a>
       </div>
@@ -186,14 +189,14 @@ function AiExplorationCarousel({ slides }: { slides: StepInsideSection["aiExplor
             <DialogTrigger asChild>
               <button type="button" className="block w-full cursor-zoom-in text-left" aria-label={`Enlarge ${slide.platform} hero exploration ${index + 1}`}>
                 <span className="block aspect-[1671/941] w-full overflow-hidden rounded-lg border bg-card">
-                  <img src={slide.image} alt={`${slide.platform} generated hero exploration ${index + 1}`} className="h-full w-full object-contain" />
+                  <img src={slide.image} alt={`${slide.platform} generated hero exploration ${index + 1}`} className="mx-auto h-full w-auto max-w-full object-contain md:mx-0 md:w-full" />
                 </span>
               </button>
             </DialogTrigger>
             <DialogContent className="max-h-[95vh] max-w-[min(96vw,90rem)] overflow-auto p-4">
               <DialogTitle className="eyebrow pr-8">{slide.platform} — hero exploration {index + 1}</DialogTitle>
               <DialogDescription className="sr-only">Enlarged view of the full generated image.</DialogDescription>
-              <img src={slide.image} alt={`${slide.platform} generated hero exploration ${index + 1}`} className="h-auto max-h-[80vh] w-full object-contain" />
+              <img src={slide.image} alt={`${slide.platform} generated hero exploration ${index + 1}`} className="mx-auto h-auto max-h-[80vh] w-auto max-w-full object-contain md:mx-0 md:w-full" />
             </DialogContent>
           </Dialog>
         ) : (
@@ -711,7 +714,7 @@ function CaseStudyPage() {
                 <span className="eyebrow text-rose">{p.type}</span>
                 <StatusTag s={p.status} />
               </div>
-              <h1 className={`font-display animate-rise mt-5 text-5xl md:text-7xl ${p.mobileAppPreview ? "max-w-none" : "max-w-3xl"}`}>{p.title}</h1>
+              <h1 className={`font-display animate-rise mt-5 break-words text-4xl md:text-7xl ${p.mobileAppPreview ? "max-w-none" : "max-w-3xl"}`}>{p.title}</h1>
               <p className={`mt-6 text-xl leading-relaxed text-charcoal ${p.mobileAppPreview ? "max-w-none" : "max-w-2xl"}`}>{p.summary}</p>
               <dl className="mt-8 grid gap-x-6 gap-y-5 border-y py-6 sm:grid-cols-3">
                 {p.facts.map((f) => <div key={f.k}><dt className="eyebrow text-muted-foreground">{f.k}</dt><dd className="mt-1 text-sm text-charcoal">{f.v}</dd></div>)}
@@ -732,7 +735,7 @@ function CaseStudyPage() {
               <span className="eyebrow text-rose">{p.type}</span>
               <StatusTag s={p.status} />
             </div>
-            <h1 className="font-display animate-rise mt-4 max-w-5xl text-4xl sm:text-5xl md:text-7xl lg:text-8xl">{p.title}</h1>
+            <h1 className="font-display animate-rise mt-4 max-w-5xl break-words text-3xl sm:text-4xl md:text-7xl lg:text-8xl">{p.title}</h1>
             <p className="mt-6 max-w-2xl text-xl text-charcoal">{p.summary}</p>
             <dl className="mt-10 grid gap-6 border-y py-6 sm:grid-cols-3">
               {p.facts.map((f) => <div key={f.k}><dt className="eyebrow text-muted-foreground">{f.k}</dt><dd className="mt-1">{f.v}</dd></div>)}
@@ -743,7 +746,7 @@ function CaseStudyPage() {
         {p.professionalWork ? (
           <ProfessionalWork projects={professionalProjects} title="Selected Deliverables" />
         ) : p.stepInside ? <StepInsideCaseStudy p={p} data={p.stepInside} /> : p.handsFree ? <HandsFreeCaseStudy p={p} data={p.handsFree} /> : p.mobileAppPreview ? <MobileAppDevelopmentCaseStudy p={p} data={p.mobileAppPreview} /> : p.heroImage ? (
-          <img src={p.heroImage} alt={`${p.title} hero`} className="mt-12 h-auto w-full rounded-lg" />
+          <img src={p.heroImage} alt={`${p.title} hero`} className="mx-auto mt-12 h-auto w-auto max-w-full rounded-lg md:mx-0 md:w-full" />
         ) : (
           <AssetPlaceholder label={`${p.title} — hero image`} className="mt-12 aspect-[16/8]" />
         )}
@@ -789,7 +792,7 @@ function CaseStudyPage() {
                   {c.assets && (
                     <div className={`mt-5 grid gap-4 ${c.assets.length > 1 ? "sm:grid-cols-2 lg:grid-cols-3" : ""}`}>
                       {c.assets.map((a) => typeof a === "object" && a.src ? (
-                        <img key={a.label} src={a.src} alt={a.label} className="h-auto w-full rounded-lg" />
+                        <img key={a.label} src={a.src} alt={a.label} className="mx-auto h-auto w-auto max-w-full rounded-lg md:mx-0 md:w-full" />
                       ) : (
                         <AssetPlaceholder key={typeof a === "string" ? a : a.label} label={typeof a === "string" ? a : a.label} />
                       ))}
@@ -806,7 +809,7 @@ function CaseStudyPage() {
         <div className="mt-16 flex flex-col gap-10 border-t pt-10 md:flex-row md:items-end md:justify-between">
           <Link to="/work/$slug" params={{ slug: next.slug }} className="group block">
             <span className="eyebrow text-muted-foreground">Next project</span>
-            <span className="font-display mt-3 block text-4xl transition-transform group-hover:translate-x-2 md:text-6xl">{next.title} →</span>
+            <span className="font-display mt-3 block break-words text-3xl transition-transform group-hover:translate-x-2 md:text-6xl">{next.title} →</span>
           </Link>
           <Link to="/work" className="eyebrow link-underline pb-1">All work</Link>
         </div>

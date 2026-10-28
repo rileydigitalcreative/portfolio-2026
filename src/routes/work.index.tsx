@@ -29,7 +29,7 @@ const workOrder = [
   "step-inside-a-computer",
   "mca-work",
   "hands-free-recipe-navigator",
-  "mobile-app-development",
+  // "mobile-app-development", // Hidden from the work list for now; case study content is preserved.
 ] as const;
 
 function WorkPage() {

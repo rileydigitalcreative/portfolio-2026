@@ -26,7 +26,7 @@ function About() {
     <Page>
       <section className="site-container section-space-intro">
         <div className="grid items-center gap-12 md:grid-cols-[5fr_7fr]">
-          <div className="aspect-[2/3] w-5/6 overflow-hidden rounded-lg">
+          <div className="mx-auto aspect-[2/3] w-5/6 overflow-hidden rounded-lg md:mx-0">
             {site.portrait ? (
               <img src={site.portrait} alt={`Portrait of ${site.name}`} className="h-full w-full object-contain" />
             ) : (
@@ -41,6 +41,14 @@ function About() {
             <p className="font-script mt-2 text-4xl text-charcoal">Hi there, I’m Riley</p>
             <div className="hairline my-8 w-24" />
             {site.aboutLong.map((t) => <p key={t} className="mb-5 max-w-xl text-lg leading-relaxed text-charcoal">{t}</p>)}
+            <a
+              href={site.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="eyebrow inline-flex min-h-11 items-center rounded-full border px-5 py-3 transition-colors hover:bg-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            >
+              Open my resume (PDF) ↗
+            </a>
           </div>
         </div>
       </section>

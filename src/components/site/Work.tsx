@@ -62,7 +62,7 @@ export function ProjectCard({
             {String(index + 1).padStart(2, "0")}
           </span>
           <span
-            className={`font-display ${p.cardImage ? "text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" : "text-blush"} ${big ? "text-6xl md:text-8xl" : "text-5xl md:text-6xl"}`}
+            className={`font-display break-words ${p.cardImage ? "text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" : "text-blush"} ${big ? "text-5xl md:text-8xl" : "text-4xl md:text-6xl"}`}
           >
             {p.title}
           </span>
@@ -77,7 +77,7 @@ export function ProjectCard({
             <span className="eyebrow text-rose">{p.type}</span>
             {p.status === "In Progress" && <StatusTag s={p.status} />}
           </div>
-          <h3 className="font-display mt-2 text-2xl md:text-3xl">{p.title}</h3>
+          <h3 className="font-display mt-2 break-words text-xl md:text-3xl">{p.title}</h3>
           <p className="mt-2 max-w-xl text-charcoal">{p.summary}</p>
         </div>
         <span className="eyebrow whitespace-nowrap pt-1 transition-transform group-hover:translate-x-1">
@@ -196,7 +196,7 @@ function BrochurePanels({
           <img
             src={panel.src}
             alt={`${project.organization} brochure — ${panel.title}`}
-            className="block h-auto w-full rounded-lg"
+            className="mx-auto block h-auto w-auto max-w-full rounded-lg md:mx-0 md:w-full"
           />
         </figure>
       ))}
